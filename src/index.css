@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #101012;
+    --bg-secondary: #161618;
+    --bg-card: #1E1E22;
+    --bg-card-secondary: #2A2A30;
+    --primary-accent: #E53935;
+    --secondary-accent: #FF3B30;
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --border-color: #2D2D35;
+  }
+
+  .light-theme {
+    --bg-main: #F4F5F8;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-secondary: #EDF0F4;
+    --primary-accent: #D32F2F;
+    --secondary-accent: #E53935;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --border-color: #E2E8F0;
+  }
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body[dir="rtl"],
+[dir="rtl"] body,
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+body[dir="ltr"],
+[dir="ltr"] body,
+[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom Scrollbar for POS and fast operational workflows */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Printable thermal receipt formatting styles */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #printable-receipt, #printable-receipt * {
+    visibility: visible !important;
+  }
+  #printable-receipt {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    background: white !important;
+    color: black !important;
+    font-family: 'Courier New', monospace !important;
+    box-shadow: none !important;
+  }
+}
